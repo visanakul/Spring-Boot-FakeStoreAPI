@@ -70,7 +70,6 @@ public class FakeProductController {
 	}
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateProduct(@PathVariable("id")Integer id, @RequestBody FakeProduct fakeProduct) {
-		System.out.println("Received "+id+" product="+fakeProduct);
 		
 		HttpEntity<FakeProduct> entity=new HttpEntity<FakeProduct>(fakeProduct);
 		ResponseEntity<FakeProduct> response=restTemplate.exchange(fakeStoreUrl+"/"+id,HttpMethod.PUT,entity,FakeProduct.class);
