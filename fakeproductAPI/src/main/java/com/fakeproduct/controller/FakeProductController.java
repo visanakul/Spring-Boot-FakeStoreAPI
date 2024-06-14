@@ -57,7 +57,6 @@ public class FakeProductController {
 	public FakeProduct createProduct(@RequestBody FakeProduct fakeProduct) {
 		ResponseEntity<FakeProduct> response=restTemplate.postForEntity(fakeStoreUrl,fakeProduct, FakeProduct.class);
 		FakeProduct newProduct=response.getBody();
-		System.out.println(newProduct);
 		return newProduct;
 	}
 	@DeleteMapping("/{id}")
@@ -75,8 +74,6 @@ public class FakeProductController {
 		
 		HttpEntity<FakeProduct> entity=new HttpEntity<FakeProduct>(fakeProduct);
 		ResponseEntity<FakeProduct> response=restTemplate.exchange(fakeStoreUrl+"/"+id,HttpMethod.PUT,entity,FakeProduct.class);
-		//restTemplate.put(fakeStoreUrl+"/"+id, fakeProduct);
-		System.out.println(response.getBody());
 		Map<String,String> responseData=new HashMap<>();
 		responseData.put("id", String.valueOf(id));
 		responseData.put("msg", "Product Updated");
